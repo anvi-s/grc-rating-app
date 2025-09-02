@@ -29,14 +29,14 @@ CREATE TABLE vendor_scores (
     pricing_value DECIMAL(3,2) CHECK (pricing_value >= 0 AND pricing_value <= 5),
     scalability_support DECIMAL(3,2) CHECK (scalability_support >= 0 AND scalability_support <= 5),
     overall_score DECIMAL(5,2) GENERATED ALWAYS AS (
-        ROUND((risk_management + compliance_management + audit_incident_management +
-               workflow_automation + integration_apis + ease_of_use + monitoring_dashboards +
-               vendor_third_party_risk + pricing_value + scalability_support) / 10, 2)
+        ROUND((risk_management*1.5 + compliance_management*1.5 + audit_incident_management*1.2 +
+               workflow_automation*1 + integration_apis*0.8 + ease_of_use*1 + monitoring_dashboards*0.7 +
+               vendor_third_party_risk*0.7 + pricing_value*0.6 + scalability_support*1) / 10, 2)
     ) STORED,
     star_rating DECIMAL(3,1) GENERATED ALWAYS AS (
-        ROUND((risk_management + compliance_management + audit_incident_management +
-               workflow_automation + integration_apis + ease_of_use + monitoring_dashboards +
-               vendor_third_party_risk + pricing_value + scalability_support) / 10, 1)
+        ROUND((risk_management*1.5 + compliance_management*1.5 + audit_incident_management*1.2 +
+               workflow_automation*1 + integration_apis*0.8 + ease_of_use*1 + monitoring_dashboards*0.7 +
+               vendor_third_party_risk*0.7 + pricing_value*0.6 + scalability_support*1) / 10, 1)
     ) STORED,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
@@ -85,10 +85,10 @@ INSERT INTO vendors (name, logo_url, summary, pricing_estimate, website_url) VAL
 ('StandardFusion', 'https://media.licdn.com/dms/image/v2/C4D0BAQEwCQXgNXCHFQ/company-logo_200_200/company-logo_200_200/0/1654283277489/standardfusion_logo?e=1758153600&v=beta&t=bwnxQZ5wfQSl-dipHavj-w4yykveLYTDUZ8sdk_uLOs', 'User-friendly SaaS for audit, risk & compliance management focused on SMBs', '$500-2000/month', 'https://standardfusion.com'),
 ('Hyperproof', 'https://media.licdn.com/dms/image/v2/D4E0BAQH2db-oqxc84A/company-logo_200_200/B4EZi9QBxuGoAM-/0/1755521752590/hyperproof_logo?e=1758153600&v=beta&t=GrwqKcyTOvrbBv54D72DnGPSpzVh2jKMXZfxXoFjBMM', 'Compliance and risk management tool with automated evidence collection and audit workflows', '$600-2500/month', 'https://hyperproof.com'),
 ('Sprinto', 'https://media.licdn.com/dms/image/v2/D4D0BAQE2rlN35F9YOA/company-logo_200_200/company-logo_200_200/0/1665581599036/sprinto_com_logo?e=1758153600&v=beta&t=rP2kJ0s6P-vht726duQSGtLRLzTA3DTGriRX9if39pw', 'Cloud compliance automation for SOC2, GDPR, ISO that scales for startups & SMEs', '$500-1500/month', 'https://sprinto.com'),
-('ControlMap', 'https://media.licdn.com/dms/image/v2/D5633AQFBdReh_CMpCw/productpage-logo-image_200_200/productpage-logo-image_200_200/0/1718146229180/scalepad_controlmap_logo?e=1756155600&v=beta&t=lAAw64n6F_vDpIgEXJYUanE-LwftGBVc10lPaeyt-3M', 'Automated compliance mapping for SOC2, ISO 27001 with Jira integration', 'from free tier to $500/month', 'https://controlmap.com'),
+('ControlMap', 'https://media.licdn.com/dms/image/v2/D5633AQFBdReh_CMpCw/productpage-logo-image_200_200/productpage-logo-image_200_200/0/1718146229180/scalepad_controlmap_logo?e=1757376000&v=beta&t=VAYXOf6k54aLLj1oJqp8Lz5IKWqik3BFBglbWDd8l2w', 'Automated compliance mapping for SOC2, ISO 27001 with Jira integration', 'from free tier to $500/month', 'https://controlmap.com'),
 ('Parapet', 'https://media.licdn.com/dms/image/v2/D560BAQHvIfSNWoXc0A/company-logo_200_200/B56ZdbmcqRHoAI-/0/1749588495380/parapetirm_logo?e=1758153600&v=beta&t=sc0OK4zc9XtlDn7ZRJn21yNZEty07tzCnLy3bBKGkF8', 'Enterprise safety, compliance, audit & health management at affordable pricing', '$3/user/month', 'https://parapet.com'),
 ('intelliGRC', 'https://media.licdn.com/dms/image/v2/C4E0BAQGi57rvw9Zxow/company-logo_200_200/company-logo_200_200/0/1677602836481/intelligrc_logo?e=1758153600&v=beta&t=R0P2_35e0ZraaByyEOfsWsvWMOwNLPGRIPAh5TET8rU', 'Focused compliance tooling for CMMC and SMEs, accessible pricing', '$400/user/month (~$4800/year)', 'https://intelligrc.com'),
-('CISO Assistant', 'https://media.licdn.com/dms/image/v2/D4E33AQGL1WRgoDs9nw/productpage-logo-image_200_200/productpage-logo-image_200_200/0/1711223887458/intuitem_ciso_assistant_logo?e=1756155600&v=beta&t=JYbk5iMU7DQiphc5oYbBgGS22wefoYtcG4S0N9GGBWQ', 'Community-edition and paid tool for risk frameworks coverage and risk registers', 'free-to-paid tiers', 'https://cisoassistant.io'),
+('CISO Assistant', 'https://media.licdn.com/dms/image/v2/D4E33AQGL1WRgoDs9nw/productpage-logo-image_200_200/productpage-logo-image_200_200/0/1711223887458/intuitem_ciso_assistant_logo?e=1757376000&v=beta&t=HtykvvOepik2bck1XRR3Vc2I6D8d7FKmAuGkFt-ILNM', 'Community-edition and paid tool for risk frameworks coverage and risk registers', 'free-to-paid tiers', 'https://cisoassistant.io'),
 ('Eramba', 'https://media.licdn.com/dms/image/v2/C4D0BAQGeUjZINUC1jQ/company-logo_200_200/company-logo_200_200/0/1662968814080/eramba_logo?e=1758153600&v=beta&t=cFb-dT22reNUeofO3FH13jl2TgMalA_7yAHKXIF6kCY', 'Open-source and enterprise GRC platform, cost-effective with strong core functionality', 'free for on-prem + optional consulting (~$6K setup)', 'https://eramba.org'),
 ('Panorays', 'https://media.licdn.com/dms/image/v2/D4D0BAQEMCzEZddSaWA/company-logo_200_200/company-logo_200_200/0/1699513956093/panorays_logo?e=1758153600&v=beta&t=c_DwACzmWi8vKEEbiuDVf0HmpK6ls-BJhcuf4GdCp00', 'Automated third-party security risk management with peer benchmarking', '$5000-15000/year', 'https://panorays.com');
 
@@ -306,6 +306,6 @@ CREATE INDEX idx_reviews_approved ON reviews(is_approved);
 CREATE INDEX idx_vendor_scores_overall_score ON vendor_scores(overall_score DESC);
 
 --UPDATE vendors
---SET logo_url = 'https://media.licdn.com/dms/image/v2/D560BAQHAkx7xtTQy1Q/company-logo_200_200/company-logo_200_200/0/1699608907430/cybersierra_logo?e=1758153600&v=beta&t=B9dibcyQ2zvLJUgDyEhaxTpYRARgzQfxPxdQ2QB4tJE' WHERE name = 'Cyber Sierra';
+--SET logo_url = 'https://media.licdn.com/dms/image/v2/D4E33AQGL1WRgoDs9nw/productpage-logo-image_200_200/productpage-logo-image_200_200/0/1711223887458/intuitem_ciso_assistant_logo?e=1757376000&v=beta&t=HtykvvOepik2bck1XRR3Vc2I6D8d7FKmAuGkFt-ILNM' WHERE name = 'CISO Assistant';
 
 -- psql -d grc_rating_db -U postgres -f C:\Users\anvir\PycharmProjects\grc-rating-app2\server\database.sql
