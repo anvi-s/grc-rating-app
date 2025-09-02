@@ -25,7 +25,7 @@ Scoring across key evaluation criteria; Each platform is scored across 10 key cr
 
 ---
 
-## Techn Stack
+## Tech Stack
 
 - **Frontend**: React 18, TypeScript
 - **Build Tool**: Vite
