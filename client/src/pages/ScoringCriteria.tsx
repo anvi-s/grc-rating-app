@@ -1,7 +1,8 @@
-import { Shield, TrendingUp, Users, DollarSign, Zap, Building, Wrench, Lock, BarChart3, HeadphonesIcon, Home } from 'lucide-react';
+import { Shield, TrendingUp, Users, DollarSign, Zap, Building, Wrench, Lock, BarChart3, HeadphonesIcon, Home, Download, FileText, Eye } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
 const scoringCriteria = [
   {
@@ -147,38 +148,79 @@ export default function ScoringCriteria() {
               })}
             </div>
 
-            {/* Additional Information */}
-            <Card className="bg-secondary/30">
+            {/* Detailed Algorithm Document */}
+            <Card className="bg-primary/5 border-primary/20 mb-8">
               <CardHeader>
-                <CardTitle>Scoring Process</CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div>
-                    <h4 className="font-semibold mb-2">Expert Review</h4>
-                    <p className="text-sm text-muted-foreground">
-                      Our team of GRC specialists conducts hands-on testing and evaluation of each platform's capabilities.
-                    </p>
+                <div className="flex items-center gap-3">
+                  <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
+                    <FileText className="w-6 h-6 text-primary" />
                   </div>
                   <div>
-                    <h4 className="font-semibold mb-2">User Feedback</h4>
-                    <p className="text-sm text-muted-foreground">
-                      Real user reviews and ratings are collected and analyzed to provide authentic insights into platform performance.
-                    </p>
-                  </div>
-                  <div>
-                    <h4 className="font-semibold mb-2">Vendor Assessment</h4>
-                    <p className="text-sm text-muted-foreground">
-                      We evaluate vendor stability, support quality, and long-term viability through comprehensive research.
-                    </p>
-                  </div>
-                  <div>
-                    <h4 className="font-semibold mb-2">Regular Updates</h4>
-                    <p className="text-sm text-muted-foreground">
-                      Scores are updated quarterly to reflect product improvements, new features, and changing market conditions.
-                    </p>
+                    <CardTitle>Detailed Scoring Algorithm</CardTitle>
+                    <CardDescription>
+                      Download our comprehensive white paper for complete technical details
+                    </CardDescription>
                   </div>
                 </div>
+              </CardHeader>
+              <CardContent>
+                <div className="mb-6">
+                  <p className="text-sm text-muted-foreground mb-4">
+                    Our detailed algorithm document provides in-depth technical specifications, mathematical formulas,
+                    and the complete methodology behind our GRC platform scoring system.
+                  </p>
+                  <ul className="text-sm text-muted-foreground space-y-1 mb-6">
+                    <li>• Mathematical scoring formulas and weight calculations</li>
+                    <li>• Detailed evaluation criteria and sub-criteria</li>
+                    <li>• Quality assurance and validation processes</li>
+                    <li>• Historical scoring methodology changes</li>
+                  </ul>
+                </div>
+
+                <Tabs defaultValue="preview" className="w-full">
+                  <div className="flex justify-between items-center mb-4">
+                    <TabsList>
+                      <TabsTrigger value="preview" className="flex items-center gap-2">
+                        <Eye className="w-4 h-4" />
+                        Preview
+                      </TabsTrigger>
+                      <TabsTrigger value="download" className="flex items-center gap-2">
+                        <Download className="w-4 h-4" />
+                        Download
+                      </TabsTrigger>
+                    </TabsList>
+                  </div>
+
+                  <TabsContent value="preview" className="mt-0">
+                    <div className="w-full h-[600px] border rounded-lg overflow-hidden">
+                      <iframe
+                        src="/scoring-algorithm.pdf"
+                        className="w-full h-full"
+                        title="Scoring Algorithm PDF Preview"
+                      />
+                    </div>
+                  </TabsContent>
+
+                  <TabsContent value="download" className="mt-0">
+                    <div className="border rounded-lg p-6 text-center">
+                      <div className="w-16 h-16 bg-primary/10 rounded-lg flex items-center justify-center mx-auto mb-4">
+                        <Download className="w-8 h-8 text-primary" />
+                      </div>
+                      <h4 className="font-semibold mb-2">Download Full Document</h4>
+                      <p className="text-sm text-muted-foreground mb-4">
+                        Get the complete PDF with all technical details and specifications
+                      </p>
+                      <a
+                        href="/scoring-algorithm.pdf"
+                        download="grc-scoring-algorithm.pdf"
+                        className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground hover:bg-primary/90 rounded-lg transition-colors font-medium"
+                      >
+                        <Download className="w-4 h-4" />
+                        Download PDF
+                      </a>
+                    </div>
+                  </TabsContent>
+                </Tabs>
               </CardContent>
             </Card>
           </div>
