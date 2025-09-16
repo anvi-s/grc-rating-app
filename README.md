@@ -1,38 +1,59 @@
-# GRC Solutions Platform
+## GRC Solutions Platform
 
-A comprehensive vendor directory and evaluation platform for Governance, Risk, and Compliance (GRC) solutions, designed to help organizations make informed decisions when selecting GRC technology partners.
+A centralized evaluation and discovery platform for Governance, Risk, and Compliance (GRC) software vendors. Designed to support informed decision-making, the platform enables users to explore, compare, and rate GRC tools using a transparent, data-driven scoring algorithm.
 
-## Overview
-
-The GRC Solutions Platform provides a centralized hub for discovering, evaluating, and comparing leading GRC technology vendors. Our platform combines expert analysis with real user feedback to deliver transparent, data-driven insights that support strategic procurement decisions.
+---
 
 ## Key Features
-- Curated database of leading GRC solution providers
-- Advanced search and filtering capabilities
-- Detailed vendor profiles with company information and solution offerings
 
-Scoring across key evaluation criteria; Each platform is scored across 10 key criteria, with weighted scores contributing to an overall rating out of 5 points. Each catgeory can be loosely classified as high priority (≥ 12%), medium priority (8-10%), and low priority (&lt;7%). Categories were compared to decide how critical each factor is to the core function of GRC tools, as well as how commonly they are cited as priorities by real-world users (compliance officers, risk managers, IT security leads, etc.).
-  - Security & Compliance
-  - Integration Capabilities
-  - User Experience
-  - Scalability
-  - Cost Effectiveness
-  - Customer Support
-  - Implementation & Training
-  - Customization & Flexibility
-  - Reporting & Analytics
-  - Vendor Stability
+* **Vendor Directory:** Access a curated database of 50+ leading GRC solution providers, complete with profiles, offerings, and differentiators.
+* **Transparent Scoring Algorithm:** Each platform is evaluated on 10 critical dimensions using the **Weighted Sum Model (WSM)**, chosen for its interpretability, robustness, and suitability for small datasets.
+* **Evaluation Criteria:** Platforms are scored (1–5) across 10 dimensions. Each dimension is weighted based on expert judgment and industry relevance.
+
+### Evaluation Dimensions
+
+Each GRC product is scored on the following 10 criteria:
+
+| Category                    | Priority Tier  | Description                                                                  |
+| --------------------------- | -------------- | ---------------------------------------------------------------------------- |
+| Security & Compliance       | High (≥ 12%)   | Measures risk control features, compliance frameworks, certifications        |
+| Integration Capabilities    | Medium (8–10%) | Evaluates APIs, third-party integrations, and data interoperability          |
+| User Experience             | Medium         | Assesses UI design, workflow intuitiveness, and accessibility                |
+| Scalability                 | Medium         | Reflects how well the platform adapts to growth or complex org structures    |
+| Cost Effectiveness          | Medium         | Evaluates value for price, licensing models, and operational cost efficiency |
+| Customer Support            | Low (< 7%)     | Rates responsiveness, expertise, and availability of support                 |
+| Implementation & Training   | Low            | Measures ease of deployment and availability of onboarding/training          |
+| Customization & Flexibility | Low            | Assesses how well the solution adapts to unique processes                    |
+| Reporting & Analytics       | Medium         | Evaluates dashboards, KPIs, export capabilities, and visualizations          |
+| Vendor Stability            | Low            | Considers company longevity, funding, and market presence                    |
+
+We evaluated multiple MCDM algorithms—**WSM, WPM, TOPSIS,** and **VIKOR**—and selected the **Weighted Sum Model (WSM)** for its:
+
+* Interpretability: Easy to explain to without diving into implementation details
+* Simplicity: Straightforward to implement in spreadsheets or scripts
+* Robustness: Minimal sensitivity to small weight changes
+* Consistency: Performs well with small datasets and uniformly scaled scores
+* 
+> For full algorithm and evaluation methodology, refer to our [Scoring Algorithm Document](client/scoring-algorithm.pdf).
+> For implementation details, see the full dataset available in our public [Google Sheet](https://docs.google.com/spreadsheets/d/1hCxfIgb6IBzKeXfrMkdMKXhmC4U0daMWWJkmPWVepSg/edit?usp=sharing)
 
 ---
 
 ## Tech Stack
 
-- **Frontend**: React 18, TypeScript
-- **Build Tool**: Vite
-- **Styling**: Tailwind CSS, shadcn/ui components
-- **Routing**: React Router
-- **State Management**: TanStack Query
-- **HTTP Client**: Axios
+| Area                 | Stack                                  |
+| -------------------- | -------------------------------------- |
+| **Frontend**         | React 18, TypeScript                   |
+| **Build Tool**       | Vite                                   |
+| **Styling**          | Tailwind CSS, shadcn/ui                |
+| **Routing**          | React Router                           |
+| **State Management** | TanStack Query (React Query)           |
+| **HTTP Client**      | Axios                                  |
+| **Data Handling**    | Google Sheets (backend dataset source) |
+| **Deployment**       | Vercel (or your preferred platform)    |
 
-This platform is maintained by Anvi Singh at Cyber Sierra.
+---
+
+This project is maintained by Anvi Singh at Cyber Sierra
+
 
