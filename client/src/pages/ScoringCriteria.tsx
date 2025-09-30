@@ -108,7 +108,7 @@ export default function ScoringCriteria() {
             <div className="text-center mb-12">
               <h2 className="text-3xl font-bold mb-4">How We Evaluate GRC Platforms</h2>
               <p className="text-lg text-muted-foreground">
-                Each platform is scored across 10 key criteria, with weighted scores contributing to an overall rating out of 100 points.
+                Each platform is scored across 10 key criteria, with weighted scores contributing to an overall rating out of 5 points. Each catgeory can be loosely classified as high priority (≥ 12%), medium priority (8-10%), and low priority (&lt;7%). Categories were compared to decide how critical each factor is to the core function of GRC tools, as well as how commonly they are cited as priorities by real-world users (compliance officers, risk managers, IT security leads, etc.).
               </p>
             </div>
 
@@ -173,7 +173,6 @@ export default function ScoringCriteria() {
                     <li>• Mathematical scoring formulas and weight calculations</li>
                     <li>• Detailed evaluation criteria and sub-criteria</li>
                     <li>• Quality assurance and validation processes</li>
-                    <li>• Historical scoring methodology changes</li>
                   </ul>
                 </div>
 

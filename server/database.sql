@@ -30,13 +30,13 @@ CREATE TABLE vendor_scores (
     scalability_support DECIMAL(3,2) CHECK (scalability_support >= 0 AND scalability_support <= 5),
     overall_score DECIMAL(5,2) GENERATED ALWAYS AS (
         ROUND((risk_management*1.5 + compliance_management*1.5 + audit_incident_management*1.2 +
-               workflow_automation*1 + integration_apis*0.8 + ease_of_use*1 + monitoring_dashboards*0.7 +
-               vendor_third_party_risk*0.7 + pricing_value*0.6 + scalability_support*1) / 10, 2)
+                workflow_automation*1 + integration_apis*0.8 + ease_of_use*1 + monitoring_dashboards*0.7 +
+                vendor_third_party_risk*0.7 + pricing_value*0.6 + scalability_support*1) / 10, 2)
     ) STORED,
     star_rating DECIMAL(3,1) GENERATED ALWAYS AS (
         ROUND((risk_management*1.5 + compliance_management*1.5 + audit_incident_management*1.2 +
-               workflow_automation*1 + integration_apis*0.8 + ease_of_use*1 + monitoring_dashboards*0.7 +
-               vendor_third_party_risk*0.7 + pricing_value*0.6 + scalability_support*1) / 10, 1)
+                workflow_automation*1 + integration_apis*0.8 + ease_of_use*1 + monitoring_dashboards*0.7 +
+                vendor_third_party_risk*0.7 + pricing_value*0.6 + scalability_support*1) / 10, 1)
     ) STORED,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
@@ -54,120 +54,120 @@ CREATE TABLE reviews (
 
 -- Insert sample vendor data
 INSERT INTO vendors (name, logo_url, summary, pricing_estimate, website_url) VALUES
-('Vanta', 'https://media.licdn.com/dms/image/v2/D560BAQGm_Mgx3KYMRA/company-logo_200_200/company-logo_200_200/0/1683744826721/vanta_security_logo?e=1758153600&v=beta&t=ezlUlSBrxv9pv8hk-D7hW2-1Ka9P3yaUVCjtxIUkz4w', 'Automated compliance platform for SOC 2, ISO 27001, and more security frameworks', '$500-2000/month', 'https://vanta.com'),
-('Drata', 'https://media.licdn.com/dms/image/v2/D560BAQGx4-21-kqwiA/company-logo_200_200/B56ZUceLQtHsAI-/0/1739939428384/drata_logo?e=1758153600&v=beta&t=L_ViuJ-mCtTthH22w6Rjbz0Y-dbZI_88z76tWtEL9hk', 'Continuous compliance monitoring and security audit automation platform', '$600-2500/month', 'https://drata.com'),
-('RSA Archer', 'https://media.licdn.com/dms/image/v2/D560BAQFsSDCAZviNFQ/company-logo_200_200/B56ZhXIONOG4AQ-/0/1753808430219/archer_integrated_risk_management_logo?e=1758153600&v=beta&t=32U7EavDTn1tXZho2jsP9O98Hn0b15Zlot8wKIW7t5M', 'Enterprise GRC platform for risk management and compliance operations', '$10000-50000/year', 'https://www.archerirm.com'),
-('MetricStream', 'https://media.licdn.com/dms/image/v2/D560BAQFbuWgokvZ8Hg/company-logo_200_200/B56ZbJqQjZGkAI-/0/1747140021030/metricstream_logo?e=1758153600&v=beta&t=XlZlD3GEyWT-ca5QEZtm6ZZI3aH9foNKQivgQGjw3Ug', 'Integrated risk management and GRC cloud platform', '$15000-75000/year', 'https://metricstream.com'),
-('IBM OpenPages', 'https://media.licdn.com/dms/image/v2/D560BAQGiz5ecgpCtkA/company-logo_200_200/company-logo_200_200/0/1688684715866/ibm_logo?e=1758153600&v=beta&t=C31b8CcrPfbmnFuB9jD67Gr8EQDVZEZhGulD6OlfpnM', 'AI-powered GRC platform for enterprise risk and compliance management', '$20000-100000/year', 'https://ibm.com/products/openpages'),
-('LogicGate', 'https://media.licdn.com/dms/image/v2/D4E0BAQFmVPonyoX0FA/company-logo_200_200/company-logo_200_200/0/1734016889456/logic_gate_logo?e=1758153600&v=beta&t=SBNOvJPUQYKjHYgfXmLKSI76_twa9XgPTMeZI1v1dvA', 'Risk management and compliance automation platform', '$800-3000/month', 'https://logicgate.com'),
-('ServiceNow GRC', 'https://media.licdn.com/dms/image/v2/D560BAQG-sNe0_VNRnQ/company-logo_200_200/B56Zak7lUsGgAI-/0/1746523805288/servicenow_logo?e=1758153600&v=beta&t=3Cqd4UoFH--lI5kJ7uKAWDBXzT8dwIPzfLNzHy-kZtc', 'Integrated governance, risk, and compliance on the Now Platform', '$25000-150000/year', 'https://servicenow.com/products/grc.html'),
-('OneTrust', 'https://media.licdn.com/dms/image/v2/D560BAQH2azTI7cMzIg/company-logo_200_200/company-logo_200_200/0/1665577396653/onetrust_logo?e=1758153600&v=beta&t=69fDed-JQlAMOBfPLwTBKe3R5nNVAL-Ww5Adz9vVFtE', 'Privacy, data governance, and third-party risk management platform', '$1000-5000/month', 'https://onetrust.com'),
-('Resolver', 'https://media.licdn.com/dms/image/v2/C560BAQELq4ruWu8iFg/company-logo_200_200/company-logo_200_200/0/1654783539967/resolver_inc_logo?e=1758153600&v=beta&t=ZcrOUy6891BhAD7DT0yTp3lUWQExz5dn7Vb7hX-J9UQ', 'Integrated risk management and digital resilience platform', '$5000-25000/year', 'https://resolver.com'),
-('Allgress', 'https://media.licdn.com/dms/image/v2/D4D0BAQEX9ujQuru3Tg/company-logo_200_200/company-logo_200_200/0/1728575633343/allgress_inc_logo?e=1758153600&v=beta&t=FDZnxrN3OGiKWfQ739wiSqT5dRMDT5aMO-c0QzD1xjg', 'Cloud-based GRC platform for mid-market enterprises', '$2000-8000/month', 'https://allgress.com');
+('Vanta', '/logos/vanta_security_logo.jpg', 'Automated compliance platform for SOC 2, ISO 27001, and more security frameworks', '$500-2000/month', 'https://vanta.com'),
+('Drata', '/logos/drata_logo.jpg', 'Continuous compliance monitoring and security audit automation platform', '$600-2500/month', 'https://drata.com'),
+('RSA Archer', '/logos/archer_integrated_risk_management_logo.jpg', 'Enterprise GRC platform for risk management and compliance operations', '$10000-50000/year', 'https://www.archerirm.com'),
+('MetricStream', '/logos/metricstream_logo.jpg', 'Integrated risk management and GRC cloud platform', '$15000-75000/year', 'https://metricstream.com'),
+('IBM OpenPages', '/logos/ibm_logo.jpg', 'AI-powered GRC platform for enterprise risk and compliance management', '$20000-100000/year', 'https://ibm.com/products/openpages'),
+('LogicGate', '/logos/logic_gate_logo.jpg', 'Risk management and compliance automation platform', '$800-3000/month', 'https://logicgate.com'),
+('ServiceNow GRC', '/logos/servicenow_logo.jpg', 'Integrated governance, risk, and compliance on the Now Platform', '$25000-150000/year', 'https://servicenow.com/products/grc.html'),
+('OneTrust', '/logos/onetrust_logo.jpg', 'Privacy, data governance, and third-party risk management platform', '$1000-5000/month', 'https://onetrust.com'),
+('Resolver', '/logos/resolver_inc_logo.jpg', 'Integrated risk management and digital resilience platform', '$5000-25000/year', 'https://resolver.com'),
+('Allgress', '/logos/allgress_inc_logo.jpg', 'Cloud-based GRC platform for mid-market enterprises', '$2000-8000/month', 'https://allgress.com');
 
 -- Large-scale enterprise & legacy platforms
 INSERT INTO vendors (name, logo_url, summary, pricing_estimate, website_url) VALUES
-('Workiva', 'https://media.licdn.com/dms/image/v2/C560BAQHGtsgiZOVMzQ/company-logo_200_200/company-logo_200_200/0/1630649270662/workiva_logo?e=1758153600&v=beta&t=4Cpoeu4xU-XaxUgLSQ2Gq610nljF9fAiyoRWb6G_KTc', 'Cloud platform specializing in financial and regulatory reporting, audit & compliance workflows', 'custom/enterprise pricing', 'https://workiva.com'),
-('SAP GRC', 'https://media.licdn.com/dms/image/v2/D560BAQGmwwo0aq4jVA/company-logo_200_200/company-logo_200_200/0/1723034255614/sap_logo?e=1758153600&v=beta&t=EoCVfWbONC36CqTDr483Rrfssz6dAMbvUTOaZMct7uc', 'Integrated suite embedded in SAP ERP for access control, process control, risk & compliance', 'custom/enterprise pricing', 'https://sap.com/products/grc'),
-('Oracle Risk Management and Compliance', 'https://media.licdn.com/dms/image/v2/D4E0BAQHYCgYovUuPtQ/company-logo_200_200/company-logo_200_200/0/1665755678957/oracle_logo?e=1758153600&v=beta&t=6y9LeW3cHs-bdndq8lSxCq116pzC9ijh7-TAhycJCJQ', 'Governance, risk and compliance tools integrated with Oracle ERP and Fusion', 'custom/enterprise pricing', 'https://oracle.com'),
-('AuditBoard', 'https://media.licdn.com/dms/image/v2/D560BAQGFD0snTGMrwg/company-logo_200_200/B56ZZjWpANHgAM-/0/1745423604096/auditboard_logo?e=1758153600&v=beta&t=VZtu-aRNSi5wNOdp7YiuvZ45MUsWdjO6yhcWA-QZxjA', 'Cloud-native platform for audit, risk, compliance, ESG and workflow automation', 'custom/Mid-Enterprise pricing', 'https://auditboard.com'),
-('Riskonnect', 'https://media.licdn.com/dms/image/v2/C560BAQHjG_nf9WKmuw/company-logo_200_200/company-logo_200_200/0/1631385246791?e=1758153600&v=beta&t=wpFqvzvWIDS_QDYlH2qI820DAyCtxY8eNrHwIV646nM', 'Connected risk management platform for ERM, compliance audits, incident tracking, ESG', '$10k-50k/year', 'https://riskonnect.com'),
-('LogicManager', 'https://media.licdn.com/dms/image/v2/C4D0BAQHNiJk301LBzw/company-logo_200_200/company-logo_200_200/0/1630567260835/logicmanager_inc_logo?e=1758153600&v=beta&t=ubijPyR04O0ZzE5fSs1G0GN-B6bxiaqB-a0ISSDoiBQ', 'Risk-based compliance, vendor risk and incident management with strong support services', '$5k-30k/year', 'https://logicmanager.com'),
-('Onspring', 'https://media.licdn.com/dms/image/v2/D560BAQGoA9zqiewCPQ/company-logo_200_200/B56ZiFWakqHkAI-/0/1754583903227/onspring_technologies_logo?e=1758153600&v=beta&t=RZUkKwtQmfOKpDVbRfPM385gcVj1gi-P1CKcIyulw3c', 'Configurable no-code GRC workflows, dashboards & reporting for audit, vendor risk, incidents', '$7k-25k/year', 'https://onspring.com'),
-('ZenGRC', 'https://media.licdn.com/dms/image/v2/D560BAQEgMmfrVgrxQA/company-logo_200_200/company-logo_200_200/0/1719882500303/riskoptics_logo?e=1758153600&v=beta&t=kw8AG81ezVHle580LtMnFDr6Yd5Q8Bdi-p-rWYJOneM', 'Simple, intuitive compliance tracking and risk management with mapped frameworks', '$10k-30k/year', 'https://zengrc.com'),
-('Convercent', 'https://media.licdn.com/dms/image/v2/D560BAQH2azTI7cMzIg/company-logo_200_200/company-logo_200_200/0/1665577396653/onetrust_logo?e=1758153600&v=beta&t=69fDed-JQlAMOBfPLwTBKe3R5nNVAL-Ww5Adz9vVFtE', 'Ethics & compliance risk platform with policy management, hotline and case handling', '$5k-20k/year', 'https://convercent.com'),
-('TraceSecurity', 'https://media.licdn.com/dms/image/v2/C4E0BAQG2EE_05cqTLg/company-logo_200_200/company-logo_200_200/0/1630627689006/tracesecurity_logo?e=1758153600&v=beta&t=Q5G7zTAuFkMU_9i2rzgc68yyTfgNgf0GCBUlryjjh-U', 'Cloud-based IT GRC tools for compliance, audit, risk and phishing simulation', '$3k-15k/year', 'https://tracesecurity.com'),
-('Lepide', 'https://media.licdn.com/dms/image/v2/C560BAQE0ulCTGYh9fQ/company-logo_200_200/company-logo_200_200/0/1630564579618/lepide_software_pvt_ltd__logo?e=1758153600&v=beta&t=2RFXjdKNtTyWJlYVx2r4w7ztL-rAWSYUw9VDkWLGEHA', 'UK-based data governance and compliance platform with modules for access governance, auditing, and insider threat detection.', 'custom/mid-enterprise pricing', 'https://lepide.com');
+('Workiva', '/logos/workiva_logo.jpg', 'Cloud platform specializing in financial and regulatory reporting, audit & compliance workflows', 'custom/enterprise pricing', 'https://workiva.com'),
+('SAP GRC', '/logos/sap_logo.jpg', 'Integrated suite embedded in SAP ERP for access control, process control, risk & compliance', 'custom/enterprise pricing', 'https://www.sap.com/products/a-z.html'),
+('Oracle Risk Management and Compliance', '/logos/oracle_logo.jpg', 'Governance, risk and compliance tools integrated with Oracle ERP and Fusion', 'custom/enterprise pricing', 'https://oracle.com'),
+('AuditBoard', '/logos/auditboard_logo.jpg', 'Cloud-native platform for audit, risk, compliance, ESG and workflow automation', 'custom/Mid-Enterprise pricing', 'https://auditboard.com'),
+('Riskonnect', '/logos/riskonnect_logo.jpg', 'Connected risk management platform for ERM, compliance audits, incident tracking, ESG', '$10k-50k/year', 'https://riskonnect.com'),
+('LogicManager', '/logos/logicmanager_inc_logo.jpg', 'Risk-based compliance, vendor risk and incident management with strong support services', '$5k-30k/year', 'https://logicmanager.com'),
+('Onspring', '/logos/onspring_technologies_logo.jpg', 'Configurable no-code GRC workflows, dashboards & reporting for audit, vendor risk, incidents', '$7k-25k/year', 'https://onspring.com'),
+('ZenGRC', '/logos/riskoptics_logo.jpg', 'Simple, intuitive compliance tracking and risk management with mapped frameworks', '$10k-30k/year', 'https://zengrc.com'),
+('Convercent', '/logos/onetrust_logo.jpg', 'Ethics & compliance risk platform with policy management, hotline and case handling', '$5k-20k/year', 'https://convercent.com'),
+('TraceSecurity', '/logos/tracesecurity_logo.jpg', 'Cloud-based IT GRC tools for compliance, audit, risk and phishing simulation', '$3k-15k/year', 'https://tracesecurity.com'),
+('Lepide', '/logos/lepide_software_pvt_ltd__logo.jpg', 'UK-based data governance and compliance platform with modules for access governance, auditing, and insider threat detection.', 'custom/mid-enterprise pricing', 'https://lepide.com');
 
 -- Emerging/niche and SMB-focused platforms
 INSERT INTO vendors (name, logo_url, summary, pricing_estimate, website_url) VALUES
-('Apptega', 'https://media.licdn.com/dms/image/v2/D4E0BAQGXy2y7m-dd3Q/company-logo_200_200/company-logo_200_200/0/1706293097459/apptega_logo?e=1758153600&v=beta&t=P8jU8Us-1hIR5h1ynlThdFiAKz3dQW8cMdFmp4URy2w', 'Continuous compliance and cybersecurity risk platform with framework cross-walking and multi-tenant support', '$400-1000/month', 'https://apptega.com'),
-('StandardFusion', 'https://media.licdn.com/dms/image/v2/C4D0BAQEwCQXgNXCHFQ/company-logo_200_200/company-logo_200_200/0/1654283277489/standardfusion_logo?e=1758153600&v=beta&t=bwnxQZ5wfQSl-dipHavj-w4yykveLYTDUZ8sdk_uLOs', 'User-friendly SaaS for audit, risk & compliance management focused on SMBs', '$500-2000/month', 'https://standardfusion.com'),
-('Hyperproof', 'https://media.licdn.com/dms/image/v2/D4E0BAQH2db-oqxc84A/company-logo_200_200/B4EZi9QBxuGoAM-/0/1755521752590/hyperproof_logo?e=1758153600&v=beta&t=GrwqKcyTOvrbBv54D72DnGPSpzVh2jKMXZfxXoFjBMM', 'Compliance and risk management tool with automated evidence collection and audit workflows', '$600-2500/month', 'https://hyperproof.com'),
-('Sprinto', 'https://media.licdn.com/dms/image/v2/D4D0BAQE2rlN35F9YOA/company-logo_200_200/company-logo_200_200/0/1665581599036/sprinto_com_logo?e=1758153600&v=beta&t=rP2kJ0s6P-vht726duQSGtLRLzTA3DTGriRX9if39pw', 'Cloud compliance automation for SOC2, GDPR, ISO that scales for startups & SMEs', '$500-1500/month', 'https://sprinto.com'),
-('ControlMap', 'https://media.licdn.com/dms/image/v2/D5633AQFBdReh_CMpCw/productpage-logo-image_200_200/productpage-logo-image_200_200/0/1718146229180/scalepad_controlmap_logo?e=1757376000&v=beta&t=VAYXOf6k54aLLj1oJqp8Lz5IKWqik3BFBglbWDd8l2w', 'Automated compliance mapping for SOC2, ISO 27001 with Jira integration', 'from free tier to $500/month', 'https://controlmap.com'),
-('Parapet', 'https://media.licdn.com/dms/image/v2/D560BAQHvIfSNWoXc0A/company-logo_200_200/B56ZdbmcqRHoAI-/0/1749588495380/parapetirm_logo?e=1758153600&v=beta&t=sc0OK4zc9XtlDn7ZRJn21yNZEty07tzCnLy3bBKGkF8', 'Enterprise safety, compliance, audit & health management at affordable pricing', '$3/user/month', 'https://parapet.com'),
-('intelliGRC', 'https://media.licdn.com/dms/image/v2/C4E0BAQGi57rvw9Zxow/company-logo_200_200/company-logo_200_200/0/1677602836481/intelligrc_logo?e=1758153600&v=beta&t=R0P2_35e0ZraaByyEOfsWsvWMOwNLPGRIPAh5TET8rU', 'Focused compliance tooling for CMMC and SMEs, accessible pricing', '$400/user/month (~$4800/year)', 'https://intelligrc.com'),
-('CISO Assistant', 'https://media.licdn.com/dms/image/v2/D4E33AQGL1WRgoDs9nw/productpage-logo-image_200_200/productpage-logo-image_200_200/0/1711223887458/intuitem_ciso_assistant_logo?e=1757376000&v=beta&t=HtykvvOepik2bck1XRR3Vc2I6D8d7FKmAuGkFt-ILNM', 'Community-edition and paid tool for risk frameworks coverage and risk registers', 'free-to-paid tiers', 'https://cisoassistant.io'),
-('Eramba', 'https://media.licdn.com/dms/image/v2/C4D0BAQGeUjZINUC1jQ/company-logo_200_200/company-logo_200_200/0/1662968814080/eramba_logo?e=1758153600&v=beta&t=cFb-dT22reNUeofO3FH13jl2TgMalA_7yAHKXIF6kCY', 'Open-source and enterprise GRC platform, cost-effective with strong core functionality', 'free for on-prem + optional consulting (~$6K setup)', 'https://eramba.org'),
-('Panorays', 'https://media.licdn.com/dms/image/v2/D4D0BAQEMCzEZddSaWA/company-logo_200_200/company-logo_200_200/0/1699513956093/panorays_logo?e=1758153600&v=beta&t=c_DwACzmWi8vKEEbiuDVf0HmpK6ls-BJhcuf4GdCp00', 'Automated third-party security risk management with peer benchmarking', '$5000-15000/year', 'https://panorays.com');
+('Apptega', '/logos/apptega_logo.jpg', 'Continuous compliance and cybersecurity risk platform with framework cross-walking and multi-tenant support', '$400-1000/month', 'https://apptega.com'),
+('StandardFusion', '/logos/standardfusion_logo.jpg', 'User-friendly SaaS for audit, risk & compliance management focused on SMBs', '$500-2000/month', 'https://standardfusion.com'),
+('Hyperproof', '/logos/hyperproof_logo.jpg', 'Compliance and risk management tool with automated evidence collection and audit workflows', '$600-2500/month', 'https://hyperproof.com'),
+('Sprinto', '/logos/sprinto_com_logo.jpg', 'Cloud compliance automation for SOC2, GDPR, ISO that scales for startups & SMEs', '$500-1500/month', 'https://sprinto.com'),
+('ControlMap', '/logos/scalepad_controlmap_logo.jpg', 'Automated compliance mapping for SOC2, ISO 27001 with Jira integration', 'from free tier to $500/month', 'https://controlmap.com'),
+('Parapet', '/logos/parapetirm_logo.jpg', 'Enterprise safety, compliance, audit & health management at affordable pricing', '$3/user/month', 'https://parapet.com'),
+('intelliGRC', '/logos/intelligrc_logo.jpg', 'Focused compliance tooling for CMMC and SMEs, accessible pricing', '$400/user/month (~$4800/year)', 'https://intelligrc.com'),
+('CISO Assistant', '/logos/intuitem_ciso_assistant_logo.jpg', 'Community-edition and paid tool for risk frameworks coverage and risk registers', 'free-to-paid tiers', 'https://cisoassistant.io'),
+('Eramba', '/logos/eramba_logo.jpg', 'Open-source and enterprise GRC platform, cost-effective with strong core functionality', 'free for on-prem + optional consulting (~$6K setup)', 'https://eramba.org'),
+('Panorays', '/logos/panorays_logo.jpg', 'Automated third-party security risk management with peer benchmarking', '$5000-15000/year', 'https://panorays.com');
 
 INSERT INTO vendors (name, logo_url, summary, pricing_estimate, website_url) VALUES
-('Cyber Sierra', 'https://media.licdn.com/dms/image/v2/D560BAQHAkx7xtTQy1Q/company-logo_200_200/company-logo_200_200/0/1699608907430/cybersierra_logo?e=1758153600&v=beta&t=B9dibcyQ2zvLJUgDyEhaxTpYRARgzQfxPxdQ2QB4tJE',
+('Cyber Sierra', '/logos/cybersierra_logo.jpg',
  'AI-enabled cybersecurity platform offering continuous control monitoring, third-party risk management, and GRC automation across frameworks like SOC2, ISO 27001, GDPR, HIPAA, PCI DSS, and custom controls',
  'custom enterprise pricing', 'https://cybersierra.co');
 
  -- 1. Scrut Automation
 INSERT INTO vendors (name, logo_url, summary, pricing_estimate, website_url) VALUES
-('Scrut Automation', 'https://media.licdn.com/dms/image/v2/D560BAQEsRFHENZj_UQ/company-logo_200_200/B56ZfU7wYvGoAI-/0/1751624124748/scrut_automation_logo?e=1758153600&v=beta&t=oaQaSJKQGQX3TQTM45wCDwv7gjfdnpDPmav5Z2BQE0Q', 'Risk-first compliance automation supporting 50+ frameworks, with powerful integrations and dashboards', 'custom/mid-enterprise pricing', 'https://scrut.io');
+('Scrut Automation', '/logos/scrut_automation_logo.jpg', 'Risk-first compliance automation supporting 50+ frameworks, with powerful integrations and dashboards', 'custom/mid-enterprise pricing', 'https://scrut.io');
 
 -- 2. Thoropass
 INSERT INTO vendors (name, logo_url, summary, pricing_estimate, website_url) VALUES
-('Thoropass', 'https://media.licdn.com/dms/image/v2/C560BAQH2S9OV9B6cNg/company-logo_200_200/company-logo_200_200/0/1680048629650/heylaika_logo?e=1758153600&v=beta&t=w_ZbfDkP87Yc_uFqWiKqfAYtzNPrtxL2Tk1KrK3jhl0', 'AI-native audit and compliance platform that includes both automation and auditing services', 'custom/mid-enterprise pricing', 'https://thoropass.com');
+('Thoropass', '/logos/thoropass_logo.jpg', 'AI-native audit and compliance platform that includes both automation and auditing services', 'custom/mid-enterprise pricing', 'https://thoropass.com');
 
 -- 3. Diligent One
 INSERT INTO vendors (name, logo_url, summary, pricing_estimate, website_url) VALUES
-('Diligent One', 'https://media.licdn.com/dms/image/v2/D4E0BAQGoBATEkMWfSA/company-logo_200_200/company-logo_200_200/0/1700083885027/diligent_board_member_services_logo?e=1758153600&v=beta&t=QmcHPg_ecP0ZzZO2jvnTSlpw5XmG17uOLIJFmYDLy44', 'Cloud-based governance, risk, audit, and compliance platform emphasizing workflow automation and analytics', 'custom/enterprise pricing', 'https://diligent.com');
+('Diligent One', '/logos/diligent_logo.jpg', 'Cloud-based governance, risk, audit, and compliance platform emphasizing workflow automation and analytics', 'custom/enterprise pricing', 'https://diligent.com');
 
 -- 4. SAI360
 INSERT INTO vendors (name, logo_url, summary, pricing_estimate, website_url) VALUES
-('SAI360', 'https://media.licdn.com/dms/image/v2/D4E0BAQG_495F2oCh6A/company-logo_200_200/company-logo_200_200/0/1709415875689/sai360_logo?e=1758153600&v=beta&t=SislCzVgXQCdSiLVuondEMELffYdbbIdUmD-HtxzDDM', 'Comprehensive GRC and third-party risk management platform strong in monitoring third-party access', 'custom/enterprise pricing', 'https://sai360.com');
+('SAI360', '/logos/sai360_logo.jpg', 'Comprehensive GRC and third-party risk management platform strong in monitoring third-party access', 'custom/enterprise pricing', 'https://sai360.com');
 
 -- 5. Fusion Framework System
 INSERT INTO vendors (name, logo_url, summary, pricing_estimate, website_url) VALUES
-('Fusion Framework System', 'https://media.licdn.com/dms/image/v2/D560BAQFkfCmj5Cl1mA/company-logo_200_200/company-logo_200_200/0/1689177916340/fusion_risk_management_logo?e=1758153600&v=beta&t=Jka8Cjc3O7GbidRbMyIAel1FfJmtUl8CxEF--jeFrSQ', 'Salesforce-based GRC focusing on business continuity and resilience', 'custom/enterprise pricing', 'https://fusiongci.com');
+('Fusion Framework System', '/logos/fusion_risk_management_logo.jpg', 'Salesforce-based GRC focusing on business continuity and resilience', 'custom/enterprise pricing', 'https://fusiongci.com');
 
 -- 6. Mitratech Alyne
 INSERT INTO vendors (name, logo_url, summary, pricing_estimate, website_url) VALUES
-('Mitratech Alyne', 'https://media.licdn.com/dms/image/v2/D560BAQFZ2nH7NHhJuA/company-logo_200_200/B56ZUjoIcGGoAM-/0/1740059478100/miratech_logo?e=1758153600&v=beta&t=RBXuQgeW6dyM0AiPbvcQXCVFcAmcE5LzA_eIiL0baRQ', 'AI-driven GRC platform with rich templates and continuous compliance capabilities', 'custom/enterprise pricing', 'https://mitratech.com');
+('Mitratech Alyne', '/logos/alyne_logo.jpg', 'AI-driven GRC platform with rich templates and continuous compliance capabilities', 'custom/enterprise pricing', 'https://mitratech.com');
 
 -- 7. Enablon
 INSERT INTO vendors (name, logo_url, summary, pricing_estimate, website_url) VALUES
-('Enablon', 'https://media.licdn.com/dms/image/v2/C4D0BAQF-R-M-_F0nAg/company-logo_200_200/company-logo_200_200/0/1630554518683/enablon_logo?e=1758153600&v=beta&t=sIB91nHcjy0otrdtyTNxpox5t-W9nN_SWSHUn57sIzw', 'EHS, ESG and GRC software widely used in sustainability-focused sectors such as energy and manufacturing', 'custom/enterprise pricing', 'https://enablon.com');
+('Enablon', '/logos/enablon_logo.jpg', 'EHS, ESG and GRC software widely used in sustainability-focused sectors such as energy and manufacturing', 'custom/enterprise pricing', 'https://enablon.com');
 
 -- 8. TeamMate+
 INSERT INTO vendors (name, logo_url, summary, pricing_estimate, website_url) VALUES
-('TeamMate+', 'https://media.licdn.com/dms/image/v2/C4E0BAQGEH0VDbAwMRg/company-logo_200_200/company-logo_200_200/0/1630575534911/teammateaudit_logo?e=1758153600&v=beta&t=wkTDqZBl11fz9jfYvrA0EAqw_kPay4ho_s8s0pkwdio', 'Audit-focused GRC and internal audit platform widely adopted in EMEA by Wolters Kluwer.', 'custom/enterprise pricing', 'https://www.wolterskluwer.com/en/solutions/teammate/teammate-audit');
+('TeamMate+', '/logos/teammateaudit_logo.jpg', 'Audit-focused GRC and internal audit platform widely adopted in EMEA by Wolters Kluwer.', 'custom/enterprise pricing', 'https://www.wolterskluwer.com/en/solutions/teammate/teammate-audit');
 
 -- 9. Compliance Manager GRC
 INSERT INTO vendors (name, logo_url, summary, pricing_estimate, website_url) VALUES
-('Risk3Sixty fullCircle', 'https://media.licdn.com/dms/image/v2/D560BAQFcEu_hNvJS6Q/company-logo_200_200/company-logo_200_200/0/1698444395856/risk3sixty_logo?e=1758153600&v=beta&t=9VLQS_TjWeOrleLfv92HIG4USLl-KmDFcX22_qOiEMY', 'Emerging GRC platform praised by users for harmonizing multiple frameworks and audit automation.', 'custom/mid-enterprise pricing', 'https://risk3sixty.com/fullcircle-grc');
+('Risk3Sixty fullCircle', '/logos/risk3sixty_logo.jpg', 'Emerging GRC platform praised by users for harmonizing multiple frameworks and audit automation.', 'custom/mid-enterprise pricing', 'https://risk3sixty.com/fullcircle-grc');
 
 -- 10. Pathlock (Control-Self-Service by Pathlock)
 INSERT INTO vendors (name, logo_url, summary, pricing_estimate, website_url) VALUES
-('Pathlock (Control-Self-Service)', 'https://media.licdn.com/dms/image/v2/D4E0BAQGgwLAAYopyZg/company-logo_200_200/company-logo_200_200/0/1730666082629/pathlock_logo?e=1758153600&v=beta&t=bJfSbXvzi9ZS3QF2Jr-CBV6_r_fhDqUGenFSnpSjdU8', 'Access governance and GRC tool focusing on audit and compliance with ERP systems', 'custom/enterprise pricing', 'https://pathlock.com');
+('Pathlock (Control-Self-Service)', '/logos/pathlock_logo.jpg', 'Access governance and GRC tool focusing on audit and compliance with ERP systems', 'custom/enterprise pricing', 'https://pathlock.com');
 
 -- 11. Secureframe (mid-level emerging)
 INSERT INTO vendors (name, logo_url, summary, pricing_estimate, website_url) VALUES
-('Secureframe', 'https://media.licdn.com/dms/image/v2/D4E0BAQHzTq03Q7dIDQ/company-logo_200_200/company-logo_200_200/0/1696367488334/secureframe_logo?e=1758153600&v=beta&t=uRUYnrz5ujBNXwXdl2X40bh0U5zttFaTsBWbgLkqB0E', 'Automated security and compliance platform helping with SOC 2, ISO 27001, GDPR, and vendor risk', 'custom/mid-enterprise pricing', 'https://secureframe.com');
+('Secureframe', '/logos/secureframe_logo.jpg', 'Automated security and compliance platform helping with SOC 2, ISO 27001, GDPR, and vendor risk', 'custom/mid-enterprise pricing', 'https://secureframe.com');
 
 -- 12. MEGA International
 INSERT INTO vendors (name, logo_url, summary, pricing_estimate, website_url) VALUES
-('MEGA International', 'https://media.licdn.com/dms/image/v2/D4E0BAQGuswuaGDC3tw/company-logo_200_200/B4EZfGiJJPHcAM-/0/1751382529028/mega_international_logo?e=1758153600&v=beta&t=9nygcC2sEAwwuNN4hOFkr2Ctj-EMTQ9n9iLOp0Ni4r0', 'French-origin HOPEX enterprise GRC suite for architecture, governance, risk and compliance across global regions.', 'custom/enterprise pricing', 'https://mega.com');
+('MEGA International', '/logos/mega_international_logo.jpg', 'French-origin HOPEX enterprise GRC suite for architecture, governance, risk and compliance across global regions.', 'custom/enterprise pricing', 'https://mega.com');
 
 -- 13. TrustArc (Privacy-focused GRC)
 INSERT INTO vendors (name, logo_url, summary, pricing_estimate, website_url) VALUES
-('TrustArc', 'https://media.licdn.com/dms/image/v2/D560BAQEZvU9LQBlK0Q/company-logo_200_200/company-logo_200_200/0/1711545481129/trustarc_logo?e=1758153600&v=beta&t=p9HPEX65xplBtEcPeMbyUXPUuOc1bdpIzzfVXx3Wwis', 'Privacy, governance and compliance platform focused on data protection and regulatory frameworks', 'custom/mid-enterprise pricing', 'https://trustarc.com');
+('TrustArc', '/logos/trustarc_logo.jpg', 'Privacy, governance and compliance platform focused on data protection and regulatory frameworks', 'custom/mid-enterprise pricing', 'https://trustarc.com');
 
 -- 14. IsoMetrix (mid-market GRC)
 INSERT INTO vendors (name, logo_url, summary, pricing_estimate, website_url) VALUES
-('IsoMetrix', 'https://media.licdn.com/dms/image/v2/C4E0BAQHjzLgA03iLcg/company-logo_200_200/company-logo_200_200/0/1649318436815/isometrix_software_logo?e=1758153600&v=beta&t=yoi9jcmIKLmcd_k6qsIyxga5jMPuN6SlP-MkaYqIdnw', 'GRC, EHS and quality risk platform for SMBs with configurable dashboards and workflows', 'custom/mid-enterprise pricing', 'https://isometrix.com');
+('IsoMetrix', '/logos/isometrix_software_logo.jpg', 'GRC, EHS and quality risk platform for SMBs with configurable dashboards and workflows', 'custom/mid-enterprise pricing', 'https://isometrix.com');
 
 -- 15. Quantivate (mid-market)
 INSERT INTO vendors (name, logo_url, summary, pricing_estimate, website_url) VALUES
-('Quantivate', 'https://media.licdn.com/dms/image/v2/D4D0BAQE95K0nq0YFIw/company-logo_200_200/company-logo_200_200/0/1702496812724/quantivate_logo?e=1758153600&v=beta&t=hA3Xcv6pvnhm0OK1Ajb09zbt8UAMgwf030BeawwV_3Q', 'Risk, compliance, and audit management platform suited to mid-market organizations', 'custom/mid-enterprise pricing', 'https://quantivate.com');
+('Quantivate', '/logos/quantivate_logo.jpg', 'Risk, compliance, and audit management platform suited to mid-market organizations', 'custom/mid-enterprise pricing', 'https://quantivate.com');
 
 -- 16. NAVEX Global (Ethics & compliance)
 INSERT INTO vendors (name, logo_url, summary, pricing_estimate, website_url) VALUES
-('NAVEX Global', 'https://media.licdn.com/dms/image/v2/D4E0BAQGu4qYFDbHrlg/company-logo_200_200/company-logo_200_200/0/1695914791808/navexinc_logo?e=1758153600&v=beta&t=JWmNQdRpEcD-BrghT0GGDq_vgWjJKMWh2kVg1ZbMJ4M', 'Ethics, compliance risk and policy management platform focused on ethics & hotline management', 'custom/enterprise pricing', 'https://navexglobal.com');
+('NAVEX Global', '/logos/navexinc_logo.jpg', 'Ethics, compliance risk and policy management platform focused on ethics & hotline management', 'custom/enterprise pricing', 'https://navexglobal.com');
 
 -- 17. SimpleRisk (small-business friendly open platform)
 INSERT INTO vendors (name, logo_url, summary, pricing_estimate, website_url) VALUES
-('SimpleRisk', 'https://media.licdn.com/dms/image/v2/C4E0BAQEUojIG_F17rw/company-logo_200_200/company-logo_200_200/0/1631352449782?e=1758153600&v=beta&t=Dhua_yq8VsrQkGkDaI3RsTHnW7G0ntBLIqReYFItOV4', 'Flexible and affordable risk-centric GRC platform for small to mid-sized organizations', 'custom/small-business pricing', 'https://simplerisk.com');
+('SimpleRisk', '/logos/simplerisk_logo.jpg', 'Flexible and affordable risk-centric GRC platform for small to mid-sized organizations', 'custom/small-business pricing', 'https://simplerisk.com');
 
 -- 18. GBTEC
 INSERT INTO vendors (name, logo_url, summary, pricing_estimate, website_url) VALUES
-('GBTEC', 'https://media.licdn.com/dms/image/v2/D560BAQHXeAIsoq--NA/company-logo_200_200/company-logo_200_200/0/1737618993454/gbtec_group_logo?e=1758153600&v=beta&t=YQ_eEXK6OucRzrEtaFDvRmvbFWKYwEK6L4Dqd2Opelc', 'Highly configurable and scalable GRC solution from Germany targeting governance, risk, and compliance.', 'custom/mid-enterprise pricing', 'https://www.gbtec.com');
+('GBTEC', '/logos/gbtec_group_logo.jpg', 'Highly configurable and scalable GRC solution from Germany targeting governance, risk, and compliance.', 'custom/mid-enterprise pricing', 'https://www.gbtec.com');
 
 
 -- Insert sample benchmark scores
@@ -241,7 +241,7 @@ INSERT INTO vendor_scores (vendor_id, risk_management, compliance_management, au
 -- 2. Thoropass (34)
 (34, 4.1, 4.0, 4.2, 4.1, 4.0, 4.2, 4.1, 3.8, 4.0, 3.9),
 
--- 3. Diligent HighBond (35)
+-- 3. Diligent One (35)
 (35, 4.0, 4.1, 4.0, 4.0, 3.8, 3.9, 4.0, 3.9, 3.5, 3.8),
 
 -- 4. SAI360 (36)
@@ -259,7 +259,7 @@ INSERT INTO vendor_scores (vendor_id, risk_management, compliance_management, au
 -- 8. TeamMate+ (40)
 (40, 3.9, 4.0, 4.3, 3.8, 3.7, 3.8, 4.0, 3.6, 3.4, 3.8),
 
--- 9. risk3sixty (41)
+-- 9. Risk3Sixty fullCircle (41)
 (41, 4.1, 4.0, 4.0, 4.1, 4.0, 4.2, 4.0, 3.9, 3.8, 4.0),
 
 -- 10. Pathlock (Control-Self-Service) (42)
@@ -268,7 +268,7 @@ INSERT INTO vendor_scores (vendor_id, risk_management, compliance_management, au
 -- 11. Secureframe (43)
 (43, 4.0, 4.1, 4.0, 4.0, 4.0, 4.2, 4.0, 3.9, 3.8, 4.0),
 
--- 12. MEGA HOPEX (44)
+-- 12. MEGA International (44)
 (44, 4.0, 4.1, 4.0, 3.9, 3.8, 3.7, 3.9, 3.8, 3.5, 3.9),
 
 -- 13. TrustArc (45)
@@ -304,8 +304,5 @@ CREATE INDEX idx_vendor_scores_vendor_id ON vendor_scores(vendor_id);
 CREATE INDEX idx_reviews_vendor_id ON reviews(vendor_id);
 CREATE INDEX idx_reviews_approved ON reviews(is_approved);
 CREATE INDEX idx_vendor_scores_overall_score ON vendor_scores(overall_score DESC);
-
---UPDATE vendors
---SET logo_url = 'https://media.licdn.com/dms/image/v2/D4E33AQGL1WRgoDs9nw/productpage-logo-image_200_200/productpage-logo-image_200_200/0/1711223887458/intuitem_ciso_assistant_logo?e=1757376000&v=beta&t=HtykvvOepik2bck1XRR3Vc2I6D8d7FKmAuGkFt-ILNM' WHERE name = 'CISO Assistant';
 
 -- psql -d grc_rating_db -U postgres -f C:\Users\anvir\PycharmProjects\grc-rating-app2\server\database.sql
